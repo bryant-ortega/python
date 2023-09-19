@@ -53,6 +53,6 @@ Use pip to install IPython shell in the virtual environment "cf-python-base".
 
 ## Export a Requirements File
 
-use "pip freeze > requirements.txt" to enerate a "requirements.txt" file for "cf-python-base". Use "mkvirtualenv" to create a new environment called "cf-python-copy". Use "pip install -r requirements.txt" to install the packages from the "requirements.txt" file.
+use "pip freeze > requirements.txt" to generate a "requirements.txt" file for "cf-python-base". Use "mkvirtualenv" to create a new environment called "cf-python-copy". Use "pip install -r requirements.txt" to install the packages from the "requirements.txt" file.
 
 ![Step 5](./Exercise-1.1/screenshots/step_5.jpg)
