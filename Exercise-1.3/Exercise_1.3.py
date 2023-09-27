@@ -29,6 +29,9 @@ for recipe in recipes_list:
     difficulty = 'Intermediate'
   elif recipe['Cooking_time'] >= 10 and len(recipe['Ingredients']) >= 4:
     difficulty = 'Hard'
+  elif recipe['Cooking_time'] < 10 and len(recipe['Ingredients']) >= 4:
+    difficulty = 'Intermediate'
+  
 
   print('===================================')
   print('Recipe: ', recipe['Name'])
