@@ -11,9 +11,9 @@ def take_recipe():
 
   recipe = {
     'Name': name, 
-    'Cooking_time: ': cooking_time, 
-    'Ingredients: ': ingredients,
-    'Difficulty: ': difficulty
+    'Cooking_time': cooking_time, 
+    'Ingredients': ingredients,
+    'Difficulty': difficulty
   }
   print('===================================')
   print('Recipe: ', name)
