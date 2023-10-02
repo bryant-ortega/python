@@ -79,5 +79,4 @@ data = {"recipes_list": recipes_list, "all_ingredients": all_ingredients}
 
 with open(my_file, 'wb') as file:
   pickle.dump(data,file)
-file.close()
 print("Your Recipe file has been updated!")
