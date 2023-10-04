@@ -1,0 +1,10 @@
+class Date(object):
+  def __init__(self, day, month, year):
+    self.day = day
+    self.month = month
+    self.year = year
+
+first_moon_landing = Date(20, 7, 1969)
+
+print("Initial values in first_moon_landing")
+print(first_moon_landing    )
