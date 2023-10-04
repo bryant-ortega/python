@@ -7,4 +7,6 @@ class Date(object):
 first_moon_landing = Date(20, 7, 1969)
 
 print("Initial values in first_moon_landing")
-print(first_moon_landing    )
+print(first_moon_landing.day)
+print(first_moon_landing.month)
+print(first_moon_landing.year)
