@@ -14,7 +14,7 @@ class Date(object):
     self.year = int(input("Enter the year: "))
 
   def is_leap_year(self):
-    return self.year % == 0
+    return self.year % 4 == 0
 
   def is_valid_date(self):
     if not (type(self.day) == int and type(self.month) == int and type(self.year) == int):
@@ -44,7 +44,7 @@ class Date(object):
     if self.day < 1 or self.day > last_dates.get(self.month):
       return False
     
-  return True
+    return True
 
 date1 = Date(29, 2, 2000)           # Valid since it's a leap year.
 date2 = Date(29, 2, 2001)           # Invalid since it's not a leap year.
