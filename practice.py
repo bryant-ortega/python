@@ -233,3 +233,9 @@ class Car(object):
     return output 
 
 
+class Dog(object):
+  def __init__(self, breed, name, temperment):
+    self.breed = breed
+    self.name = name
+    self.temperment = temperment
+  
