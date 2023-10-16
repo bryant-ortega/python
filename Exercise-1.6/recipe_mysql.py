@@ -19,27 +19,26 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS Recipes(
 
 
 def main_menu(conn, cursor):
-   choice = ""
-   while (choice != "quit"):
-    print("Main Menu") + "\n"
-    print("=============================") + "\n"
-    print("Choose a function by number: ") + "\n"
-    print("   1. Create a new recipe")
-    print("   2. Search for a recipe by ingredient")
-    print("   3. Update an existing recipe")
-    print("   4. Delete a recipe")
-    print("   5. View all recipes")
-    print("\n   Type 'quit' to exit the program.")
-    choice = input("Your choice: ")
+    choice = ""
+    while (choice != "quit"):
+        print("\nMain Menu")
+        print("=============================")
+        print("Choose a function by number: ")
+        print("   1. Create a new recipe")
+        print("   2. Search for a recipe by ingredient")
+        print("   3. Update an existing recipe")
+        print("   4. Delete a recipe")
+        print("\nType 'quit' to exit the program.")
+        choice = input("Your choice: ")
 
-    if choice == "1":
-       create_recipe(conn, cursor)
-    elif choice == "2":
-       search_recipe(conn, cursor)
-    elif choice == "3":
-       update_recipe(conn, cursor)
-    elif choice == "4":
-       delete_recipe(conn, cursor)
+        if choice == "1":
+            create_recipe(conn, cursor)
+        elif choice == "2":
+            search_recipe(conn, cursor)
+        elif choice == "3":
+            update_recipe(conn, cursor)
+        elif choice == "4":
+            delete_recipe(conn, cursor)
 
 
 
@@ -51,7 +50,7 @@ def create_recipe(conn, cursor):
 
   cooking_time = int(input("\nEnter the cooking time in minutes: "))
 
-  ingredients_input = str(input("n\Enter the ingredients separated by comma: "))
+  ingredients_input = str(input("\nEnter the ingredients separated by comma: "))
   ingredients = ingredients_input.split(",")
 
   difficulty = calculate_difficulty(cooking_time, ingredients)
@@ -65,7 +64,7 @@ def create_recipe(conn, cursor):
 
   # Commits changes made to the Recipes table
   conn.commit()
-  print("Recipe saved into the database.")
+  print("Recipe saved into the database.\n")
 
 
 
