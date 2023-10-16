@@ -69,12 +69,63 @@ def create_recipe(conn, cursor):
 
 
 
-# def search_recipe(conn, cursor):
-#   all_ingredients = []
-#   cursor.execute("SELECT ingredients FROM Recipes")
-#   results = cursor.fetchall()
-#   for each ingredient in results:
+def search_recipe(conn, cursor):
+  all_ingredients = []
+
+  # Stores the entire list of ingredients available into results
+  cursor.execute("SELECT ingredients FROM Recipes")
+  results = cursor.fetchall()
+
+  # Iterates through the results list and for each recipe ingredients tuple
+  for recipe_ingredients_list in results:
+    # Iterate through recipe ingredients tuple
+    for recipe_ingredients in recipe_ingredients_list:
+      # split each recipe ingredients tuple
+      recipe_ingredient_split = recipe_ingredients.split(", ")
+      all_ingredients.extend(recipe_ingredient_split)
+
+  # Remove all duplicates from the list
+  all_ingredients = list(dict.fromkeys(all_ingredients))
      
+  
+  # Displays all ingredients with corresponding numbers to user
+  all_ingredients_list = list(enumerate(all_ingredients))
+
+  print("\nAll ingredients list: \n")
+  print("=========================")
+
+  for index, tup in enumerate(all_ingredients_list):
+    print(str(tup[0]+1) + ". " + tup[1])
+
+  try:
+    # Asks user to choose a number corresponding to an ingredient
+    ingredient_number_input = int(input("Enter the number of the corresponding ingredient you want to search for: "))
+
+    # translate number back to correct index
+    corrected_index = int(ingredient_number_input - 1)
+
+    ingredient_searched = all_ingredients_list[corrected_index][1]
+
+  except:
+    print("An unexpected error occurred. Make sure to select a number from the list.")
+
+  else:
+    # Searches for rows in the table that contain search_ingredient within the ingredients column
+    print(f"\nRecipes containing {ingredient_searched}: ")
+    print("================================")
+
+    cursor.execute("SELECT * FROM Recipes WHERE ingredients LIKE %s", ('%' + ingredient_searched + '%', ))
+
+    results_recipes_with_ingredient = cursor.fetchall()
+
+    # Displays the data from each recipe found
+    for row in results_recipes_with_ingredient:
+      print("\nID: ", row[0])
+      print("Name: ", row[1])
+      print("Ingredients: ", row[2])
+      print("Cooking Time: ", row[3])
+      print("Difficulty: ", row[4])
+
 
 def update_recipe(conn, cursor):
   # Display every recipe in full
@@ -133,7 +184,18 @@ def update_recipe(conn, cursor):
 
 
 def delete_recipe(conn, cursor):
-  return
+  # Display every recipe to the user to allow him to delete the one he wants
+  view_all_recipes(conn, cursor)
+
+  # Asks the user to input the ID of the recipe he wants to delete
+  recipe_id_for_deletion = int((input("Enter the ID of the recipe you want to delete: ")))
+
+  # Delete the corresponding recipe into result  
+  cursor.execute("DELETE FROM Recipes WHERE id = (%s)", (recipe_id_for_deletion, ))
+
+  # Commits changes made to the Recipes table
+  conn.commit()
+  print("\nRecipe successfully deleted from the database.")
 
 
 # function to define recipe difficulty
