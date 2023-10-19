@@ -1,7 +1,13 @@
 import mysql.connector
+import os
+
+mysql_user = os.environ.get("MYSQL_USER")
+mysql_password = os.environ.get("MYSQL_PASSWORD")
+
 
 conn = mysql.connector.connect(
-    host='localhost', user='cf-python', passwd='password')
+    host='localhost', user=mysql_user, passwd=mysql_password)
+
 
 cursor = conn.cursor()
 
