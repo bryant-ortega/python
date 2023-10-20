@@ -196,7 +196,7 @@ def search_by_ingredients():
 
   # Display available ingredients with corresponding numbers to the user
   print("\nIngredients list:")
-  print("===================")
+  print("=" * 28)
   for index, ingredient in enumerate(all_ingredients):
     print(f"{index + 1}. {ingredient}")
 
@@ -227,7 +227,7 @@ def search_by_ingredients():
     # Display the matching recipes using their __str__ methods
     if recipes:
       print("\nRecipes containing the selected ingredients:")
-      print("="* 25) 
+      print("="* 28) 
       for recipe in recipes:
         print(recipe.__str__())
     # No recipes found with the selected ingredients.
@@ -248,7 +248,7 @@ def edit_recipe():
   
   # Display available recipes to the user
   print("\nRecipes available for editing:")
-  print("=" * 25)
+  print("=" * 28)
   for recipe_id, recipe_name in recipes:
     print(f"{recipe_id}. {recipe_name}")
 
@@ -266,7 +266,7 @@ def edit_recipe():
 
   # Display the recipe attributes for editing
   print("\nEdit Recipe Attributes:")
-  print("=" * 25)
+  print("=" * 28)
   print(f"1. Name: {recipe_to_edit.name}")
   print(f"2. Cooking Time: {recipe_to_edit.cooking_time} minutes")
   print(f"3. Ingredients: {recipe_to_edit.ingredients}")
