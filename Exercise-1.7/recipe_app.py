@@ -3,12 +3,13 @@ from sqlalchemy import create_engine
 
 
 # Add security to login credentials
-import os
-mysql_user = os.environ.get("MYSQL_USER")
-mysql_password = os.environ.get("MYSQL_PASSWORD")
+# import os
+# mysql_user = os.environ.get("MYSQL_USER")
+# mysql_password = os.environ.get("MYSQL_PASSWORD")
 
 # Use the credentials to create an engine object called engine that connects to your database
-engine = create_engine("mysql://mysql_user:mysql_password@localhost/task_database")
+engine = create_engine("mysql://cf-python:password@localhost/task_database")
+
 
 # Import types for the table you will create
 from sqlalchemy import Column
@@ -20,8 +21,9 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 # Store your declarative base class into a variable called Base
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import declarative_base
 Base = declarative_base()
+
 
 # Define the Recipe model
 class Recipe(Base):
@@ -41,15 +43,15 @@ class Recipe(Base):
   def __str__(self): 
     list_ingredients = self.ingredients.split(", ")
     output = (
-      "=" * 15 
+      "=" * 28 
       + f"\nRecipe: {self.name} ID: {self.id}"
       + f"\nCooking Time: {self.cooking_time} minutes"
       + f"\nDifficulty: {self.difficulty}"
-      + f"\nIngredients: "
+      + f"\nIngredients:\n"
     )
     for ingredient in list_ingredients:
       output += f"\t- {ingredient}\n"
-      return output
+    return output
     
   # Method to calculate the difficulty of a recipe based on the number of ingredients and cooking time
   def calculate_difficulty(self, cooking_time, ingredients):
@@ -81,16 +83,16 @@ def main_menu():
   choice = ""
   while (choice != "quit"):
     print("\nMain Menu")
-    print("=" * 25)
+    print("=" * 28)
     print("Choose a function by number: ")
     print("\t1. Create a new recipe")
-    print("\t2. Search for a recipe by ingredient")
-    print("\t 3. Update an existing recipe")
-    print("\t4. Edit a recipe")
+    print("\t2. Search by ingredient")
+    print("\t3. Edit an existing recipe")
+    print("\t4. Delete a recipe")
     print("\t5. View all recipes")
-    print("\tType 'quit' to exit the program.")
+    print("\n\tType 'quit' to exit the program.")
 
-    choice = input("Enter your choice: ")
+    choice = input("\nEnter your choice: ")
 
     if choice == "1":
       create_recipe()
@@ -338,3 +340,5 @@ def delete_recipe():
 
   except ValueError:
     print("Invalid input. Please enter a valid recipe ID.")
+
+main_menu()
