@@ -1,4 +1,4 @@
-# import sqlalchemy to manage SQL
+# import sqlalchemy to manage SQL Fuck you Kole
 from sqlalchemy import create_engine
 
 
