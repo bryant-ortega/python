@@ -23,4 +23,5 @@ class Recipe(models.Model):
     return difficulty
 
   def __str__(self):
-    return str(self.recipe_name)
+    return str(self.recipe_name)  
+  
