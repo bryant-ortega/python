@@ -1,0 +1,6 @@
+Exercise 2.5: Django MVT Revisited
+
+I only added pictures to the only model; Recipe. Everything else from Exercise 2.3 remained the same.
+
+Frontend Inspirations:
+
