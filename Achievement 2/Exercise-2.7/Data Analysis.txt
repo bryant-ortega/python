@@ -1,0 +1,16 @@
+Users should be able to search by category and recipe name. 
+When they search for a recipe by name, they should be able to see it’s cooking time in a graph. 
+If they search a category of recipe they should see how many there are of that type. 
+
+Data Analysis
+
+Bar Chart based on user input
+X Axis = Recipe Name
+Y Axis = Cooking Time
+
+Pie Chart of categories based on user input
+
+Line Chart based on user input
+X Axis = Date Added
+Y Axis = Cooking Time
+
